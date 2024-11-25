@@ -212,7 +212,7 @@ h2 {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .chat-button {
@@ -228,6 +228,9 @@ h2 {
     align-items: center;
     justify-content: center;
     transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 9999;
 }
 
 .chat-button:hover {
@@ -316,4 +319,37 @@ h2 {
     background: white;
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 768px) {
+    .chat-widget {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .chat-popup {
+        bottom: 80px;
+        right: 10px;
+        width: calc(100vw - 20px);
+        max-width: 350px;
+        height: 60vh;
+        max-height: 400px;
+    }
+
+    .chat-button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Ensure the SVG icon is visible */
+.chat-button svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
