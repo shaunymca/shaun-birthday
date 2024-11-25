@@ -19,6 +19,55 @@
                 <h2>Countdown to Shaun's Birthday</h2>
                 <div id="countdown"></div>
             </section>
+            <section class="location-section">
+                <h2>🎉 BREAKING NEWS! 🎉 (Hot off the press - November 25, 2024)</h2>
+                <br>
+
+                <p>The party location has been chosen by a committee of experts (aka whoever was around when I made the decision) 🎯</p>
+                <br>
+
+                <p>Join me at the illustrious establishment known simply as...</p>
+                <br>
+
+                <h3>✨ BAR ✨</h3>
+                <br>
+
+                <p>(Yes, that's really what it's called)</p>
+                <br>
+
+                <p>
+                    <a href="https://www.google.com/maps/place/BAR/@39.9500187,-75.1808378,15z/data=!3m1!4b1!4m6!3m5!1s0x89c6c62f6dd610af:0x5797b4cef8c277d0!8m2!3d39.9500202!4d-75.162384!16s%2Fg%2F11gz_4pzm?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D" target="_blank">
+                        1309 Sansom Street<br>
+                        Philadelphia, PA 19107<br>
+                        (It's that place between other places) 🗺️
+                    </a>
+                </p>
+                <br>
+
+                <p>
+                    🕖 December 27, 2024 at 7:00 PM 🕖<br>
+                    (That's when the magic happens)
+                </p>
+                <br>
+
+                <p>🍻 First round's on the birthday boy! Because turning 40 deserves a proper toast! 🥂</p>
+                <br>
+
+                <p>
+                    🍕 We're also serving up some sweet, sweet Za from Zio's<br>
+                    (Because what's a birthday without pizza?)
+                </p>
+                <br>
+
+                <a href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ADTSTART:20241227T190000%0D%0ADTEND:20241227T230000%0D%0ASUMMARY:🎂 Shaun's 40th Birthday Extravaganza! 🎈%0D%0ALOCATION:Bar, 1309 Sansom St, Philadelphia, PA 19107%0D%0ADESCRIPTION:Come watch Shaun enter his fourth decade! Free drink + pizza = party time!%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" 
+                   class="calendar-button" 
+                   download="shaun-40th-birthday.ics">
+                    📅 Click here to remember this shindig! 
+                </a>
+            </section>
+
+            <br>
+            <br>
 
             
             <section class="text-section">
@@ -39,5 +88,26 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <div id="chat-widget" class="chat-widget">
+        <div id="chat-popup" class="chat-popup hidden">
+            <div class="chat-header">
+                <h3>🗨️ Party Chat</h3>
+                <button id="close-chat">×</button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input-area">
+                <input type="text" id="username" placeholder="Your name" />
+                <input type="text" id="message-input" placeholder="Type your message..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+        <button id="chat-button" class="chat-button" aria-label="Open chat">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+    </div>
 </body>
 </html>
