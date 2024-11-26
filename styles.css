@@ -216,26 +216,24 @@ h2 {
 }
 
 .chat-button {
+    position: relative;
+    overflow: visible !important;
+    background: #007bff;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #007bff;
-    color: white;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s;
-    -webkit-tap-highlight-color: transparent;
-    position: relative;
-    z-index: 9999;
+    animation: pulse 2s infinite;
 }
 
-.chat-button:hover {
-    transform: scale(1.1);
-    background: #0056b3;
+.chat-button svg {
+    position: relative;
+    z-index: 2;
+    color: white;
 }
 
 .chat-popup {
@@ -343,13 +341,34 @@ h2 {
     }
 }
 
-/* Ensure the SVG icon is visible */
-.chat-button svg {
-    width: 24px;
+.unread-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 12px;
+    min-width: 24px;
     height: 24px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
 }

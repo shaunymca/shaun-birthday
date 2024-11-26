@@ -169,3 +169,25 @@ function confettiHandler(event) {
 }
 
 document.getElementById('profile-image').addEventListener('mouseenter', confettiHandler);
+
+// Add this to your existing Firebase message listener
+function updateUnreadCount(count) {
+    const badge = document.getElementById('unread-count');
+    badge.textContent = count;
+    // Hide badge if count is 0
+    badge.style.display = count > 0 ? 'flex' : 'none';
+}
+
+// When chat is opened, reset the counter
+document.getElementById('chat-button').addEventListener('click', function() {
+    updateUnreadCount(0);
+});
+
+// In your Firebase message listener, increment the counter when chat is closed
+firebase.database().ref('messages').on('child_added', (snapshot) => {
+    const chatPopup = document.getElementById('chat-popup');
+    if (chatPopup.classList.contains('hidden')) {
+        const currentCount = parseInt(document.getElementById('unread-count').textContent) || 0;
+        updateUnreadCount(currentCount + 1);
+    }
+});
