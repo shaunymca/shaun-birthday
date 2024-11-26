@@ -25,10 +25,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const messageInput = document.getElementById('message-input');
         const usernameInput = document.getElementById('username');
         const sendButton = document.getElementById('send-button');
+        const notificationSound = document.getElementById('notification-sound');
+        let isWindowActive = true;
+
+        // Track window focus
+        window.onfocus = () => { isWindowActive = true; };
+        window.onblur = () => { isWindowActive = false; };
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function playNotificationSound() {
+            // Only play sound if the window is not active
+            if (!isWindowActive) {
+                notificationSound.currentTime = 0; // Reset sound to start
+                notificationSound.play().catch(e => console.log('Error playing sound:', e));
+            }
+        }
 
         // Chat toggle functionality
         chatButton.addEventListener('click', () => {
             chatPopup.classList.remove('hidden');
+            setTimeout(scrollToBottom, 100); // Small delay to ensure chat is visible
         });
 
         closeChat.addEventListener('click', () => {
@@ -52,7 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDiv.className = 'chat-message';
             messageDiv.textContent = `${message.username}: ${message.text}`;
             chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Play sound and scroll to bottom
+            playNotificationSound();
+            scrollToBottom();
         }
 
         async function sendMessage() {
