@@ -218,22 +218,25 @@ h2 {
 .chat-button {
     position: relative;
     overflow: visible !important;
-    background: #007bff;
+    z-index: 1;
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    background: #007bff;
+    color: white;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: pulse 2s infinite;
+    transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.chat-button svg {
-    position: relative;
-    z-index: 2;
-    color: white;
+.chat-button:hover {
+    transform: scale(1.1);
+    background: #0056b3;
 }
 
 .chat-popup {
@@ -341,6 +344,51 @@ h2 {
     }
 }
 
+/* Ensure the SVG icon is visible */
+.chat-button svg {
+    position: relative;
+    z-index: 2;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2s infinite;
+    transform: rotate(30deg);
+    z-index: 1;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) rotate(30deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(30deg);
+    }
+}
+
 .unread-badge {
     position: absolute;
     top: -10px;
@@ -361,14 +409,17 @@ h2 {
     z-index: 3;
 }
 
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
+.unread-badge:not(:empty) {
+    display: flex;
+}
+
+.age-restriction {
+    background-color: #fff3cd;
+    border: 2px solid #ffeeba;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    color: #856404;
 }
