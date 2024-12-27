@@ -121,9 +121,7 @@ function updateCountdown() {
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
     document.getElementById('countdown').innerHTML = `
-        <div class="countdown-item"><span class="countdown-value">${days}</span> Days</div>
-        <div class="countdown-item"><span class="countdown-value">${hours}</span> Hours</div>
-        <div class="countdown-item"><span class="countdown-value">${minutes}</span> Minutes</div>
+        <div class="countdown-item"><span class="countdown-value">TODAY!</span></div>
     `;
 }
 // Call updateCountdown function every second
